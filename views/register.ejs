@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Registro de Usuário</title>
+</head>
+<body>
+    <div class="register-container">
+        <h2>Formulário de Cadastro</h2>
+
+        <% if (typeof erro !== 'undefined' && erro === 'email_existente') { %>
+            <p style="color: crimson; font-weight: bold;">Atenção: Este e-mail já está em uso.</p>
+        <% } %>
+
+        <form action="/register" method="POST">
+            <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+            
+            <label for="nome"><b>Nome:</b></label>
+            <input type="text" placeholder="Digite seu nome" name="nome" required>
+
+            <label for="email"><b>Email:</b></label>
+            <input type="email" placeholder="exemplo@email.com" name="email" required>
+
+            <label for="cargo"><b>Cargo:</b></label>
+            <input type="text" placeholder="Sua ocupação" name="cargo" required>
+
+            <label for="senha"><b>Senha:</b></label>
+            <input type="password" placeholder="Defina uma senha" name="senha" required>
+            
+            <br><br>
+            <button type="submit">Finalizar Cadastro</button>
+        </form>
+
+        <p><a href="/login">Voltar para Login</a></p>
+    </div>
+</body>
+</html>
